@@ -72,12 +72,17 @@
 <br>
 <br>
 <div class= "row">
+<% if user_signed_in? %>
 <h2>Add an improvement:</h2>
 
 <%= render "improvements/form" %>
 <p>
 <p>	
+  <% end %>
 </div>
+
 <%= link_to 'Back', projects_path, class: "btn btn-primary" %>
 
 </div>
+
+<div id="foot"></div>
