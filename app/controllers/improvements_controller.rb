@@ -15,6 +15,7 @@ class ImprovementsController < ApplicationController
   # GET /improvements/new
   def new
     @improvement = Improvement.new
+
   end
 
   # GET /improvements/1/edit

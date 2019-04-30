@@ -16,7 +16,8 @@
 <br>
 <div class ="row">
   <h2> Improvements </h2>
-  <p class="short-text">Tell us how we can make our projects better! Add any improvement idea you wish to see implemented on any current project. We welcome any and all ideas, to help make our city a better place- environmentally, physically, and socially. If you don’t feel like adding, simply share the love on your favorite idea already listed by clicking the clapping hands button.</p>
+      <p class="short-text">Tell us how we can make our projects better! Remember to sign in, or make a new account. Add any improvement idea you wish to see implemented on any current project. We welcome any and all ideas to help make our city a better place- environmentally, physically, and socially. If you don’t feel like adding, simply like your favorite ideas already listed by clicking the thumbs-up button.</p>
+
   </div>
   <br>
 <br>
@@ -43,6 +44,7 @@
           <div class="favorite">
           <span class="likes-count" id="improvement-<%= improvement.id %>">
             <%= improvement.get_upvotes.size %>
+
           </span>
             <%= link_to like_project_improvement_path(@project, improvement), class:"like-btn", method: :put, :remote=> true do %>
           <div>
@@ -111,14 +113,31 @@
   </div>
 
   <% end %>
+  <div class="card-prev description-box">
+        <h4>Thumbs up!</h4>
+        <span><p><i class="fa fa-thumbs-up fa-2x"> </i> </p></span>
+        <p>Like a new improvement idea? The thumbs-up button allows you to show your support for improvements of projects in Greater Lansing! Just open an improvement and click the thumbs-up button!</p>
+</div>
 </div>
 </div>
 <br>
 <br>
 
 
+<div class="row">
+<h2>Join the Discussion!</h2>
+      <p class="short-text">Share you thoughts, ask questions, and engage with your community!  
+</p>
+</div>
+<br>
+<br>
+<%= render 'disqus' %>
+<br>
+<br>
 <%= link_to 'Back', projects_path, class: "btn btn-primary" %>
 
 </div>
+
+
 
 <div id="foot"></div>
