@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
 
   resources :projects do
-    resources :improvements 
+    resources :improvements do
+    	member do
+    		put "like" => "improvements#vote"
+    	end
+    end
   end
+
 
   resources :principles
 

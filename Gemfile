@@ -9,6 +9,8 @@ gem 'sqlite3', '~> 1.3.6'
 
 #gem 'mysql2'
 
+#acts_As_votable
+gem 'acts_as_votable'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets

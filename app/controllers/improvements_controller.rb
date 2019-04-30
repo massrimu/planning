@@ -1,6 +1,6 @@
 class ImprovementsController < ApplicationController
-  before_action :set_improvement, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_improvement, only: [:show, :edit, :update, :destroy, :vote]
+  respond_to :js, :json, :html
   # GET /improvements
   # GET /improvements.json
   def index
@@ -65,6 +65,16 @@ class ImprovementsController < ApplicationController
     @improvement.destroy
     redirect_to project_path(@project)
     
+  end
+
+  def vote
+    @improvement = Improvement.find(params[:id])
+    if !current_user.liked? @improvement
+      @improvement.liked_by current_user
+    elsif current_user.liked? @improvement
+      @improvement.unliked_by current_user
+    end
+
   end
 
   private
