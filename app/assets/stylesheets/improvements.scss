@@ -47,7 +47,8 @@ h4 {
 	background-color: white;
 	color: black;
 	height: 15vw;
-	in-height: 500px;
+	min-height: 300px;
+	max-height: 450px;
 	overflow: hidden;
 	position: relative;
 	transition: .3s;
