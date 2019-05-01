@@ -1,31 +1,40 @@
 <p id="notice"><%= notice %></p>
 <div class="container">
-<h1>Greater Lansing Projects</h1>
+<div class="row project-heading">
+<h1>Explore Greater Lansing Projects.</h1>
+<p class="short-text">Find all of Lansing's future city developments and details listed below. Learn about improvement ideas, vote on them, and tell us what you think!</p>
+</div>
+ <br>
+ <br>
 
-<table>
-
-  <tbody>
-    <% @projects.each do |project| %>
-      <tr>
-
-        <td><h2><%= link_to project.title, project %> </h2></td>
-        <td> <% if project.image.exists? %>
-           <%= link_to (image_tag project.image.url(:medium), class: 'img-responsive img-medium') %>
-        <% end %>
-        </td>
-
-        <% if user_signed_in? %>
+<div class ="row">
+  <div class="card-grid">
+  <% @projects.each do |project| %>
+  <div class = "card-link">
+  <%= link_to project do %>
+  <div class=" card-prev">
+      <% if project.image.exists? %>
+        <%=(image_tag project.image.url(:medium), class: 'img-responsive img-medium') %>
+      <% end %>
+    <div class="card-prev-text">
+      <h3><%= project.title %></h3>
+      <% if user_signed_in? %>
              <%= link_to 'Edit', edit_project_path(project) %>
-             <%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %>
-        <% end %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+             <%= link_to 'Delete', project, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <% end %>
+    </div>
+  </div>
+  <% end %>
+</div>
+  <% end %>
+  </div>
+</div>
+
 
 <br>
   <% if user_signed_in? %>
     <%= link_to 'New Project', new_project_path %>
   <% end %>
 </div>
+
+<div id="foot"></div>

@@ -7,8 +7,10 @@ gem 'rails', '~> 4.2.4'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', '~> 1.3.6'
 
-gem 'mysql2'
+#gem 'mysql2'
 
+#acts_As_votable
+gem 'acts_as_votable'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets

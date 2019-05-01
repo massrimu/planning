@@ -2,74 +2,142 @@
 
 <p id="notice"><%= notice %></p>
 
-<p>
-  <h2> <%= @project.title %> </h2>
-
-</p>
-
-<p>
-   <% if @project.image.exists? %>
-        <%= link_to (image_tag @project.image.url(:medium), class: 'img-responsive img-medium') %>
-    <% end %>
-</p>
-
-<p>
-  <%= simple_format(@project.description) %>
-</p>
-
-<p>
+<div class="row project-heading">
+  <h1> <%= @project.title %> </h1>
+  <p class="short-text"><%= @project.description %></p>
+  <p>
   <%= link_to 'More Information about the Project', @project.webpage %>
 </p>
-
-
 <% if user_signed_in? %>
     <%= link_to 'Edit Project', edit_project_path(@project) %>
 <% end %>
- 
-<h2>Improvement Ideas</h2>
+</div>
+<br>
+<br>
+<div class ="row">
+  <h2> Improvements </h2>
+      <p class="short-text">Tell us how we can make our projects better! Remember to sign in, or make a new account. Add any improvement idea you wish to see implemented on any current project. We welcome any and all ideas to help make our city a better place- environmentally, physically, and socially. If you don’t feel like adding, simply like your favorite ideas already listed by clicking the thumbs-up button.</p>
 
+  </div>
+  <br>
+<br>
+ <div class ="row">
+<div class="card-grid">
 <% @project.improvements.each do |improvement| %>
-  <p>
-	<b>
-    <%= improvement.title.to_s.force_encoding("UTF-8") %>
-    </b>
-  </p>
+<div class=" card-prev" data-toggle="modal" data-target="#myModal<%= improvement.id %>">
+  <% if improvement.image.exists? %><%= (image_tag improvement.image.url(:medium), class: 'img-responsive img-thumbnail') %><% end %>
+  <div class="card-prev-text">
+    <h3><%= improvement.title.to_s.force_encoding("UTF-8") %></h3>
+    <p><%= improvement.author.to_s.force_encoding("UTF-8") %></p>
+  </div>
+</div>
 
-  <p>
-    <b>Author:</b>
-    <%= improvement.author.to_s.force_encoding("UTF-8") %>
-  </p> 
+  <!-- Modal -->
+  <div class="modal fade" id="myModal<%= improvement.id %>" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title"><%= improvement.title.to_s.force_encoding("UTF-8") %></h4>
+        </div>
+        <div class="modal-body">
+          <div class="favorite">
+          <span class="likes-count" id="improvement-<%= improvement.id %>">
+            <%= improvement.get_upvotes.size %>
 
-  <p>
-    <b>Principle:</b>
-    <%= improvement.principle %>
-  </p>
+          </span>
+            <%= link_to like_project_improvement_path(@project, improvement), class:"like-btn", method: :put, :remote=> true do %>
+          <div>
+            <span><p><i class="fa fa-thumbs-up fa-2x"> </i> </p></span>
+          </div>
+          <%end%>
+          </div>
+         <table>
+          <tr>
+            <th><b>Author:<b></th>
+            <td><%= improvement.author.to_s.force_encoding("UTF-8") %></td>
+          </tr>
+            <tr>
+            <th><b>Principle:<b></th>
+            <td><%= improvement.principle %></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><%= simple_format(improvement.description) %></td>
+          </tr>
+          
+        </table>
 
-  <p>
-    <b>Description:</b>
-    <%= simple_format(improvement.description) %>
-  </p>
+        </div>
+        <div class="modal-footer">
+          <% if user_signed_in? %>
+              <%= link_to 'Delete Improvement', project_improvement_path(@project, improvement),
+                                method: :delete,
+                                data: { confirm: "Are you sure?"} %>
+          <% end %>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 
-  <p>
-      <% if improvement.image.exists? %>
-         <%= link_to (image_tag improvement.image.url(:medium), class: 'img-responsive img-thumbnail') %>
-      <% end %>
-  </p>
+        </div>
+      </div>
+    </div>
+  </div>
 
+
+<% end %>
 <% if user_signed_in? %>
-    <%= link_to 'Delete Improvement', project_improvement_path(@project, improvement),
-    									method: :delete,
-    									data: { confirm: "Are you sure?"} %>
-<% end %>
 
-<% end %>
+<div class="card-prev" data-toggle="modal" data-target="#addImprovement">
+  <p class="addBtn"> + </p>
+  <div class="card-prev-text">
+    <h3>Add Improvement</h3>
+  </div>
+</div>
 
-<h2>Add an improvement:</h2>
+  <!-- Modal -->
+  <div class="modal fade" id="addImprovement" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Add an Improvement</h4>
+        </div>
+        <div class="modal-body">
+        <%= render "improvements/form" %>
 
-<%= render "improvements/form" %>
-<p>
-<p>	
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
+  <% end %>
+  <div class="card-prev description-box">
+        <h4>Thumbs up!</h4>
+        <span><p><i class="fa fa-thumbs-up fa-2x"> </i> </p></span>
+        <p>Like a new improvement idea? The thumbs-up button allows you to show your support for improvements of projects in Greater Lansing! Just open an improvement and click the thumbs-up button!</p>
+</div>
+</div>
+</div>
+<br>
+<br>
+
+
+<div class="row">
+<h2>Join the Discussion!</h2>
+      <p class="short-text">Share you thoughts, ask questions, and engage with your community!  
+</p>
+</div>
+<br>
+<br>
+<%= render 'disqus' %>
+<br>
+<br>
 <%= link_to 'Back', projects_path, class: "btn btn-primary" %>
 
 </div>
+
+
+
+<div id="foot"></div>
