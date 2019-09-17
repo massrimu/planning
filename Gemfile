@@ -47,7 +47,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-gem 'devise', '~> 4.2'
+gem 'devise', '~> 4.7'
 gem 'slim'
 gem 'paperclip'
 gem 'bootstrap-sass'
