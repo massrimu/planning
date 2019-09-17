@@ -1,33 +1,34 @@
 <p id="notice"><%= notice %></p>
-
 <div class="container">
-  <h1>Great City Principles</h1>
+  <h1>Creating a Greater Lansing</h1>
+</br>
+  <h3>Content: Nature, Transportation, Infrastructure and Community</h3>
+  </br>
+  <% @principles.in_groups_of(4, false).each do |principle| %>
   <div class="row">
-    <% @principles.each do |principle| %>
-
-    <div class="col-md-4">
-
-      <div class="thumbnail">
-        <% if principle.image.exists? %>
-            <%= link_to (image_tag principle.image.url(:thumb), class: 'img-responsive img-thumbnail') %>
-        <% end %>
-        <%= link_to principle.title, principle %>
-        <br>
-        <% if user_signed_in? %>
-            <%= link_to 'Edit', edit_principle_path(principle) %>
-            <%= link_to 'Destroy', principle, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-link"  %>
-        <% end %>
-
+    <% principle.each do |principle| %>
+    <div class="col-md-3">
+      <div class="mdl-card mdl-shadow--4dp">
+        <div class="mdl-card__media">
+          <% if principle.image.exists? %>
+              <%= link_to (image_tag principle.image.url(:medium), class: 'card-image', width: 300, height:150) %>
+          <% end %>
+        </div>
+        <div class="mdl-card__title">
+        <h1 class="mdl-card__title-text"><%= link_to principle.title, principle %></h1>
+        </div>
+        <div class="mdl-card__actions">
+          <% if user_signed_in? %>
+              <%= link_to 'Edit', edit_principle_path(principle) %>
+              <%= link_to 'Destroy', principle, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-link"  %>
+          <% end %>
+        </div>
       </div>
-
     </div>
-    <% end %>
-
+    <%end%>
   </div>
-
+  <% end %>
 <% if user_signed_in? %>
   <%= link_to 'New Principle', new_principle_path, class: "btn btn-link" %>
 <% end %>
-
 </div>
-

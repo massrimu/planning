@@ -1,9 +1,17 @@
 source 'https://rubygems.org'
 
+# gem 'railties', '~> 5.1', '>= 5.1.5'
+#
+# gem 'activemodel', '~> 5.2.3', '>= 4.2.6'
 
+gem 'bundler'
+
+gem 'material_design_lite-rails', '~> 1.3'
+
+gem 'material_design_lite-sass'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-#gem 'rails', '4.2.0'
-gem 'rails', '~> 4.2.4'
+gem 'rails', '4.2.0'
+#gem 'rails', '~> 5.2.3'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', '~> 1.3.6'
 
@@ -11,6 +19,7 @@ gem 'mysql2'
 
 #acts_As_votable
 gem 'acts_as_votable'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -38,7 +47,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-gem 'devise', '~> 3'
+gem 'devise', '~> 4.2'
 gem 'slim'
 gem 'paperclip'
 gem 'bootstrap-sass'
@@ -65,5 +74,3 @@ group :development do
 end
 
 gem 'puma'
-
-
