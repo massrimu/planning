@@ -6,6 +6,8 @@ source 'https://rubygems.org'
 
 gem 'bundler'
 
+gem 'autoprefixer-rails', '~> 7.1.6'
+
 gem 'material_design_lite-rails', '~> 1.3'
 
 gem 'material_design_lite-sass'
