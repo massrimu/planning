@@ -8,6 +8,9 @@ gem 'bundler'
 
 gem 'autoprefixer-rails', '~> 7.1.6'
 
+gem 'rails_admin'
+
+
 gem 'material_design_lite-rails', '~> 1.3'
 
 gem 'material_design_lite-sass'
@@ -54,6 +57,8 @@ gem 'slim'
 gem 'paperclip'
 gem 'bootstrap-sass'
 gem 'simple_form'
+
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
