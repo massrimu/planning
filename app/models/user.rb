@@ -8,6 +8,6 @@ class User < ActiveRecord::Base
   has_many :principles
   acts_as_voter
   # has_many :improvements
-  has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }
+  has_attached_file :avatar, styles: { medium: "700x700>", thumb: "300x300>" }
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 end

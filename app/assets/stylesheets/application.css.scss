@@ -1,4 +1,10 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
-@import "improvements"
+@import "improvements";
+@import "navigation";
+@import "welcome";
+@import "about";
 
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+    background-color: black !important;
+}
