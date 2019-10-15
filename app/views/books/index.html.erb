@@ -1,30 +1,66 @@
+<p id="notice"><%= notice %></p>
+
 <div class="container">
   <h1>Great City Books</h1>
+  <br>
+  <br>
   <div class="row">
+  <div class="card-grid">
     <% @books.each do |book| %>
+    <% if book.image.exists? %>
 
-    <div class="col-md-4">
+  <div class=" card-prev" data-toggle="modal" data-target="#myModal<%= book.id %>">
+  <%= (image_tag book.image.url(:medium), class: 'img-responsive img-thumbnail') %>
+  <div class="card-prev-text">
+    <h3><%= book.title.to_s.force_encoding("UTF-8") %></h3>
+    <p><%= book.author.to_s.force_encoding("UTF-8") %></p>
+  </div>
+</div>
 
-      <div class="thumbnail">
-        <% if book.image.exists? %>
-            <%= link_to (image_tag book.image.url(:thumb), class: 'img-responsive img-thumbnail') %>
-        <% end %>
-        <%= link_to book.title, book %>
-        <br>
+  <!-- Modal -->
+  <div class="modal fade" id="myModal<%= book.id %>" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title"><%= book.title.to_s.force_encoding("UTF-8") %></h4>
+        </div>
+        <div class="modal-body">
+         <table>
+          <tr>
+            <th><b>Author:<b></th>
+            <td><%= book.author.to_s.force_encoding("UTF-8") %></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><%= simple_format(book.description) %></td>
+          </tr>
+          
+        </table>
+
+        </div>
+        <div class="modal-footer">
         <% if user_signed_in? %>
             <%= link_to 'Edit', edit_book_path(book) %>
-            <%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-link"  %>
+            <%= link_to 'Destroy', new_book_path, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-link"  %>
         <% end %>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 
+        </div>
       </div>
-
     </div>
-    <% end %>
-
   </div>
+<% end %>
 
+    <% end %>
+  </div>
+<br>
 <% if user_signed_in? %>
   <%= link_to 'New Book', new_book_path, class: "btn btn-link" %>
 <% end %>
+
+<br>
+<br>
+<%= link_to 'Back', root_path, class: "btn btn-primary" %>
 
 </div>

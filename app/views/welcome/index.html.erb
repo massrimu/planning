@@ -1,0 +1,42 @@
+<div class="container">
+<div class="row">
+  <h1>Planning a Greater Lansing</h1>
+  <p>This website is your place to learn about the major developments that will reshape East Lansing and Lansing.</p>
+  <p>How will these projects improve our community?  How can you have a voice in this future?</p>
+</div>
+
+  <div class="row">
+    <div class="col-md-4 col-lg-4 category">
+    	<div class="mSpace"></div>
+      <%= link_to projects_path do %>
+			<%= image_tag("/assets/architecture.jpg",  alt: "Cityscape icon", class: "welcome_image") %>
+		<% end %>
+		<h3>Projects</h3>
+		<p>These projects are transforming Greater Lansing</p>
+    </div>
+      <div class="col-md-4 col-lg-4 category">
+      	<div class="mSpace"></div>
+      <%= link_to principles_path do %>
+			<%= image_tag("/assets/community.jpg",  alt: "Team icon", class: "welcome_image") %>
+		<% end %>
+		<h3>Great City Principles</h3>
+		<p>Share your ideas about what makes a Great City</p>
+    </div>
+    <div class="col-md-4 col-lg-4 category">
+    	<div class="mSpace"></div>
+      <%= link_to books_path do %>
+			<%= image_tag("/assets/books.jpg",  alt: "Books icon", class: "welcome_image") %>
+		<% end %>
+		<h3>Great City Books</h3>
+		<p>Learn about designs that make cities productive, vibrant, and sustainable.</p>
+    </div>
+
+  </div>
+  <div class="row">
+  	<div class="mSpace"></div>
+  <h2>About</h2>
+  <p>The Our Michigan Ave website is a timely space for deliberation as hundreds of millions of dollars of development projects are underway in Greater Lansing. Our connections to planners, developers, government officials, and community organizations positioned the Our Michigan Ave site to be a rich space for public deliberation....   <%= link_to 'Learn More!', about_index_path %></p>
+
+
+</div>
+</div>

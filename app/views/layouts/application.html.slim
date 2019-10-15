@@ -1,42 +1,41 @@
 doctype html
 html
-	head
-		title Planning a Greater Lansing
-		= stylesheet_link_tag    'application', media: 'all'
-		= javascript_include_tag 'application'
-		= csrf_meta_tags
-		<link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet">
-		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  head
+    meta content=("text/html; charset=UTF-8") http-equiv="Content-Type" /
+    title Planning a Greater Lansing
+    = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = csrf_meta_tags
+    = favicon_link_tag asset_path('favicon.png'), :rel => 'icon', :type =>  'image/png'
+    link href="https://fonts.googleapis.com/css?family=Montserrat:100,400,600,700,800&display=swap" rel="stylesheet" /
+    link crossorigin="anonymous" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" rel="stylesheet" /
+    meta content="width=device-width, initial-scale=1.0" name="viewport" /
+  body
+    nav.navbar.navbar-default
+      .container-fluid
+        /! Brand and toggle get grouped for better mobile display
+        .navbar-header
+          button.navbar-toggle.collapsed aria-expanded="false" data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button" 
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          = link_to root_path do
+            = image_tag("/assets/Logo.png",  alt: "OMA - Our Michigan Ave", class: "navbar-brand")
 
+          ul.nav.navbar-nav.navbar-right
+              li
+                a href="#"  Link
+              - if user_signed_in?
+                li= link_to current_user.email, edit_user_registration_path
+                li= link_to "SIGN OUT", destroy_user_session_path, method: :delete
+              - else
+                li= link_to "SIGN UP", new_user_registration_path
+                li= link_to "SIGN IN", new_user_session_path
+  .container
+    .row
+      .col-md-12
+        p.notice= notice
+        p.alert= alert
 
-
-body
-	.navbar.navbar-default
-		.container
-			.navbar-header
-				button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"
-					span.sr-only Toggle navigation
-					span.icon-bar
-					span.icon-bar
-					span.icon-bar
-				= link_to "Planning a Greater Lansing", root_path, class: "navbar-brand"
-			.navbar-collapse.collapse.navbar-right
-				ul.nav.navbar-nav
-					li.active
-						= link_to "HOME", root_path
-					- if user_signed_in?
-						li= link_to current_user.email, edit_user_registration_path
-						li= link_to "SIGN OUT", destroy_user_session_path, method: :delete
-					- else
-						li= link_to "SIGN UP", new_user_registration_path
-						li= link_to "SIGN IN", new_user_session_path
-
-	.container
-		.row
-			.col-md-12
-				p.notice= notice
-				p.alert= alert
-
-	= yield
-
+  = yield
