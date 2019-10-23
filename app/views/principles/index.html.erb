@@ -39,15 +39,12 @@
             <td></td>
             <td>  An example of this principle at work: <%= link_to principle.casestudy, principle.case_webpage %></td>
           </tr>
-          
+
         </table>
 
         </div>
         <div class="modal-footer">
-        <% if user_signed_in? %>
-            <%= link_to 'Edit', edit_principle_path(principle) %>
-            <%= link_to 'Destroy', principle, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-link"  %>
-        <% end %>
+
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 
         </div>

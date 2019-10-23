@@ -18,10 +18,7 @@
       <% end %>
     <div class="card-prev-text">
       <h3><%= project.title %></h3>
-      <% if user_signed_in? %>
-             <%= link_to 'Edit', edit_project_path(project) %>
-             <%= link_to 'Delete', project, method: :delete, data: { confirm: 'Are you sure?' } %>
-      <% end %>
+      
     </div>
   </div>
   <% end %>

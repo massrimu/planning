@@ -11,10 +11,7 @@
         <% end %>
         <%= link_to book.title, book %>
         <br>
-        <% if user_signed_in? %>
-            <%= link_to 'Edit', edit_book_path(book) %>
-            <%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-link"  %>
-        <% end %>
+
 
       </div>
 

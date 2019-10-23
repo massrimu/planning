@@ -24,9 +24,7 @@
   An example of this principle at work: <%= link_to @principle.casestudy, @principle.case_webpage %>
 </p>
 
-<% if user_signed_in? %>
-    <%= link_to 'Edit Principle', edit_principle_path(@principle), class: "btn btn-primary" %>
-<% end %>
+ 
 
 <%= link_to 'Back', principles_path, class: "btn btn-primary" %>
 

@@ -8,9 +8,8 @@
   <p>
   <%= link_to 'More Information about the Project', @project.webpage %>
 </p>
-<% if user_signed_in? %>
-    <%= link_to 'Edit Project', edit_project_path(@project) %>
-<% end %>
+
+
 </div>
 <br>
 <br>
@@ -67,16 +66,12 @@
             <td></td>
             <td><%= simple_format(improvement.description) %></td>
           </tr>
-          
+
         </table>
 
         </div>
         <div class="modal-footer">
-          <% if user_signed_in? %>
-              <%= link_to 'Delete Improvement', project_improvement_path(@project, improvement),
-                                method: :delete,
-                                data: { confirm: "Are you sure?"} %>
-          <% end %>
+
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 
         </div>
@@ -128,7 +123,7 @@
 
 <div class="row">
 <h2>Join the Discussion!</h2>
-      <p class="short-text">Share you thoughts, ask questions, and engage with your community!  
+      <p class="short-text">Share you thoughts, ask questions, and engage with your community!
 </p>
 </div>
 <br>
