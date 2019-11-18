@@ -40,6 +40,10 @@
 
         </div>
         <div class="modal-footer">
+          <% if has_role? (:admin) %>
+            <%= link_to 'Edit', edit_book_path(book) %>
+            <%= link_to 'Destroy', new_book_path, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-link"  %>
+        <% end %>
 
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 

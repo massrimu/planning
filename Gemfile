@@ -10,6 +10,8 @@ gem 'autoprefixer-rails', '~> 7.1.6'
 
 gem 'rails_admin'
 
+gem 'cancancan'
+gem 'rolify'
 
 gem 'material_design_lite-rails', '~> 1.3'
 
